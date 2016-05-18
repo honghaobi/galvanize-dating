@@ -2,39 +2,39 @@
   <form method="POST" action="javascript:void(0)" ng-submit="Signup.signup(user)">
     <div class="small-4 columns">
       <label for="username">Username: </label>
-      <input type="text" ng-model="user.username" name="username" id="username">
+      <input type="text" ng-model="user.username" name="username" id="username" placeholder='Must Be At Least 6 characters long' minlength='6' required="true">
     </div>
     <div class="small-4 columns">
       <label for="firstName">First Name: </label>
-      <input type="text" ng-model="user.names.firstName" name="firstname" id="firstname">
+      <input type="text" ng-model="user.names.firstName" name="firstname" id="firstname" required="true">
     </div>
     <div class="small-4 columns">
       <label for="lastName">Last Name: </label>
-      <input type="text" ng-model="user.names.lastName" name="lastname" id="lastname">
+      <input type="text" ng-model="user.names.lastName" name="lastname" id="lastname" required="true">
     </div>
     <div class="small-2 columns">
       <label for="slug">Slug: </label>
-      <input type="text" ng-model="user.slug" name="slug" id="slug">
+      <input type="text" ng-model="user.slug" name="slug" id="slug" required="true">
     </div>
     <div class="small-5 columns">
       <label for="email">Email: </label>
-      <input type="email" ng-model="user.email" name="email" id="email">
+      <input type="email" ng-model="user.email" name="email" id="email" required="true">
     </div>
     <div class="small-3 columns">
       <label for="dob">Date of Birth: </label>
-      <input type="text" ng-model="user.dob" name="dob" id="dob">
+      <input type="text" ng-model="user.dob" name="dob" id="dob" placeholder='1988-09-09' required="true">
     </div>
     <div class="small-1 columns">
       <label for="lat">Lat: </label>
-      <input type="number" ng-model="user.address.geo.lat" name="lat" id="lat">
+      <input type="number" ng-model="user.address.geo.lat" name="lat" id="lat" required="true">
     </div>
     <div class="small-1 columns">
       <label for="lng">Long: </label>
-      <input type="number" ng-model="user.address.geo.lng" name="lng" id="lng">
+      <input type="number" ng-model="user.address.geo.lng" name="lng" id="lng" required="true">
     </div>
     <div class="small-6 columns">
       <label for="password">Password: </label>
-      <input type="password" ng-model="user.password" name="password" id="password">
+      <input type="password" ng-model="user.password" name="password" id="password" minlength="8">
     </div>
     <div class="small-6 columns">
       <label for="password">Sign Up: </label>

@@ -8,17 +8,15 @@
         .controller("LoginController", LoginController)
         .controller("UserController", UserController)
         .controller("EditController", EditController)
-        .controller("UsersController", UsersController);
+        .controller("MembersController", MembersController);
 
     function HomeController(UserService, $state){
       var vm = this;
-
     };
 
     function SignupController(UserService, $state){
       var vm = this;
       vm.signup = function(user){
-        console.log(user);
         UserService.signup(user).then(function(data){
           UserService.setCurrentUser(data);
           $state.go('home');
@@ -34,7 +32,7 @@
       vm.login = function(user){
         UserService.login(user).then(function(data){
           UserService.setCurrentUser(data);
-          $state.go('home');
+          $state.go('members');
         }).catch(function(data){
           vm.user = {};
         });
@@ -70,9 +68,10 @@
       };
     };
 
-    function UsersController (currentUser,users){
+    function MembersController (currentUser,members){
       var vm = this;
-      vm.users = users;
+      vm.members = members.data.data;
+      console.log(vm.members);
       vm.currentUser = currentUser;
     };
 

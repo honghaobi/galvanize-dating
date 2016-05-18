@@ -31,17 +31,17 @@
         controllerAs: "Login",
         preventWhenLoggedIn: true
       })
-      .state("users", {
-        url: '/users',
-        templateUrl: "templates/index.html",
-        controller: "UsersController",
-        controllerAs: "Users",
+      .state("members", {
+        url: '/members',
+        templateUrl: "templates/members.html",
+        controller: "MembersController",
+        controllerAs: "Members",
         restricted: true,
         resolve: {
           currentUser : function(UserService) {
             return UserService.getCurrentUser();
           },
-          users: function(UserService){
+          members: function(UserService){
             return UserService.getAllUsers();
           }
         }

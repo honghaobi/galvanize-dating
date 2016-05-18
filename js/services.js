@@ -9,15 +9,14 @@
       var baseUrl = 'http://galvanize-student-apis.herokuapp.com/gdating/';
       return {
         signup: function(user){
-          console.log(user);
           return $http.post(baseUrl + 'auth/register', user);
         },
         login: function(user){
           return $http.post(baseUrl + 'auth/login', user);
         },
         setCurrentUser: function(data){
-          $window.localStorage.setItem("token",data.data.token);
-          $window.localStorage.setItem("user",JSON.stringify(data.data.user));
+          $window.localStorage.setItem("token", data.data.data.token);
+          $window.localStorage.setItem("user", JSON.stringify(data.data.data.user));
         },
         getCurrentUser: function(){
           var dfd = $q.defer();
@@ -26,10 +25,10 @@
         },
         logout: function(){
           localStorage.clear();
-        }
-        // getAllUsers: function(){
-        //   return $http.get("/api/users/");
-        // },
+        },
+        getAllUsers: function(){
+          return $http.get(baseUrl + "members");
+        },
         // getSingleUser: function(id){
         //   return $http.get("/api/users/" + id);
         // },

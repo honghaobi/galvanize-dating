@@ -1,0 +1,11 @@
+<h1>Members</h1>
+<div class="row small-up-2 medium-up-4 large-up-6">
+  <div class="column" ng-repeat="member in Members.members">
+    <div class="callout">
+      <p class="lead">
+        {{member.names.firstName}} {{member.names.lastName}}
+      </p>
+      <img ng-src={{member.avatar}} alt="avatar" />
+    </div>
+  </div>
+</div>
