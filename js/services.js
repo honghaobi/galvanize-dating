@@ -5,7 +5,7 @@
         .module("datingApp")
         .service("UserService", UserService);
 
-    function UserService($http, $location, $q, $window){
+    function UserService($http, $location, $q, $window, $state){
       var baseUrl = 'http://galvanize-student-apis.herokuapp.com/gdating/';
       return {
         signup: function(user){
@@ -20,24 +20,31 @@
         },
         getCurrentUser: function(){
           var dfd = $q.defer();
-          dfd.resolve(JSON.parse($window.localStorage.getItem("user")));
+          var logedInUser = $window.localStorage.getItem("user");
+          if (logedInUser) {
+            dfd.resolve(JSON.parse(logedInUser));
+          } else {
+            dfd.resolve(null);
+          }
           return dfd.promise;
         },
         logout: function(){
           localStorage.clear();
+          $state.go('home');
         },
         getAllUsers: function(){
           return $http.get(baseUrl + "members");
         },
-        // getSingleUser: function(id){
-        //   return $http.get("/api/users/" + id);
-        // },
-        // editUser: function(user){
-        //   return $http.put("/api/users/" + user.data.id, user.data);
-        // },
-        // removeUser: function(id){
-        //   return $http.delete("/api/users/" + id);
-        // }
+        getProfile: function(id){
+          return $http.get(baseUrl + "members/" + id);
+        },
+        editUser: function(user){
+          console.log(user.id);
+          return $http.put(baseUrl + "members/" + user.id, user);
+        },
+        removeUser: function(id){
+          return $http.delete("/api/users/" + id);
+        }
       };
     };
 })();

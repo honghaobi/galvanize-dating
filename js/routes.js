@@ -46,6 +46,21 @@
           }
         }
       })
+      .state("profile", {
+        url: '/profile/:id',
+        templateUrl: "templates/profile.html",
+        controller: "UserController",
+        controllerAs: "Profile",
+        restricted: true,
+        resolve:  {
+          currentUser: function(UserService) {
+            return UserService.getCurrentUser();
+          },
+          user: function(UserService,$stateParams){
+            return UserService.getProfile($stateParams.id);
+          }
+        }
+      })
       .state("logout", {
         url: '/logout',
         restricted: true,
@@ -53,35 +68,6 @@
           app: function(UserService, $state){
             UserService.logout();
             $state.go("login");
-          }
-        }
-      })
-      .state("user", {
-        url: '/users/:id',
-        templateUrl: "templates/user.html",
-        controller: "UserController",
-        controllerAS: "Users",
-        restricted: true,
-        resolve:  {
-          currentUser: function(UserService) {
-            return UserService.getCurrentUser();
-          },
-          user: function(UserService,$stateParams){
-            return UserService.getSingleUser($stateParams.id);
-          }
-        }
-      })
-      .state("edit_user", {
-        url: '/users/:id/edit',
-        templateUrl: "templates/edit.html",
-        controller: "EditController",
-        restricted: true,
-        resolve:  {
-          currentUser: function(UserService) {
-            return UserService.getCurrentUser();
-          },
-          user: function(UserService,$stateParams){
-            return UserService.getSingleUser($stateParams.id);
           }
         }
       });

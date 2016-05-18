@@ -16,15 +16,29 @@
         <li class="menu-text">
           <a href="/" class="logo">💞</a></li>
         <li class="menu-text menu-head">Galvanize Dating</li>
-        <li class="menu-text"><a href="/members" class="button">Members</a></li>
       </ul>
     </div>
-    <div class="top-bar-right">
+    <div class="top-bar-right" ng-controller="MenuController as Menu">
       <ul class="menu">
-        <li class="menu-text"><a href="/signup" class="success button">Sign up</a></li>
-        <li class="menu-text"><a href="/login" class="primary button">Log in</a></li>
-        <li class="menu-text"><a href="/profile" class="warning button">Profile</a></li>
-        <li class="menu-text"><a href="/logout" class="alert button">Log out</a></li>
+        <li class="menu-text">
+          Hi,
+          {{Menu.currentUser.names.firstName}} {{Menu.currentUser.names.lastName}}
+        </li>
+        <li class="menu-text" ng-hide='Menu.currentUser'>
+          <a href="/signup" class="success button">Sign up</a>
+        </li>
+        <li class="menu-text" ng-hide='Menu.currentUser'>
+          <a href="/login" class="primary button">Log in</a>
+        </li>
+        <li class="menu-text" ng-show='Menu.currentUser'>
+          <a href="/members" class="button">Members</a>
+        </li>
+        <li class="menu-text" ng-show='Menu.currentUser'>
+          <a href="/profile/{{Menu.currentUser._id}}" class="warning button">Profile</a>
+        </li>
+        <li class="menu-text" ng-show='Menu.currentUser'>
+          <a href="/logout" class="alert button">Log out</a>
+        </li>
       </ul>
 
     </div>

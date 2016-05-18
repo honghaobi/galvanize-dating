@@ -3,12 +3,21 @@
 
     angular
         .module("datingApp")
+        .controller("MenuController", MenuController)
         .controller("HomeController", HomeController)
         .controller("SignupController", SignupController)
         .controller("LoginController", LoginController)
         .controller("UserController", UserController)
-        .controller("EditController", EditController)
         .controller("MembersController", MembersController);
+
+    function MenuController($rootScope, UserService){
+      var vm = this;
+      $rootScope.$on('$locationChangeSuccess', function(){
+        UserService.getCurrentUser().then(function(data){
+          vm.currentUser = data;
+        });
+      });
+    };
 
     function HomeController(UserService, $state){
       var vm = this;
@@ -41,13 +50,14 @@
 
     function UserController(UserService, $state, $window, currentUser, user){
       var vm = this;
-      vm.currentUser = currentUser;
-      vm.user = user;
-    };
+      UserService.getCurrentUser().then(function(data){
+        vm.currentUser = data;
+        console.log(data);
+      });
 
-    function EditController (UserService, $state, $window, currentUser, user){
-      var vm = this;
-      vm.editUser = function(user){
+      vm.editProfile = function(user){
+        user.id = currentUser._id;
+        console.log(user);
         UserService.editUser(user).then(function(data){
           $window.localStorage.removeItem("user");
           $window.localStorage.setItem("user",JSON.stringify(data.data));
@@ -58,7 +68,7 @@
         });
       };
 
-      vm.removeUser = function(id){
+      vm.deleteProfile = function(id){
         UserService.removeUser(id).then(function(data){
           $window.localStorage.clear();
           $state.go('login');
