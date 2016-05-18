@@ -9,41 +9,46 @@
       var baseUrl = 'http://galvanize-student-apis.herokuapp.com/gdating/';
       return {
         signup: function(user){
-          return $http.post(baseUrl + 'auth/register', user);
+          return $http.post(baseUrl + 'auth/register', user).then((result)=>{
+            this.setCurrentUser(result.data.data.token, result.data.data.data);
+          });
         },
         login: function(user){
-          return $http.post(baseUrl + 'auth/login', user);
+          return $http.post(baseUrl + 'auth/login', user).then((result)=>{
+            this.setCurrentUser(result.data.data.token, result.data.data.user);
+          });
         },
-        setCurrentUser: function(data){
-          $window.localStorage.setItem("token", data.data.data.token);
-          $window.localStorage.setItem("user", JSON.stringify(data.data.data.user));
+        setCurrentUser: function(token, user){
+          $window.localStorage.setItem("token", token);
+          $window.localStorage.setItem("user", JSON.stringify(user));
         },
         getCurrentUser: function(){
           var dfd = $q.defer();
           var logedInUser = $window.localStorage.getItem("user");
-          if (logedInUser) {
-            dfd.resolve(JSON.parse(logedInUser));
-          } else {
-            dfd.resolve(null);
-          }
+          dfd.resolve(JSON.parse(logedInUser));
           return dfd.promise;
         },
         logout: function(){
           localStorage.clear();
-          $state.go('home');
         },
-        getAllUsers: function(){
-          return $http.get(baseUrl + "members");
+        getMembers: function(){
+          return $http.get(baseUrl + "members").then((result)=>{
+            return result.data.data;
+          });
         },
         getProfile: function(id){
           return $http.get(baseUrl + "members/" + id);
         },
         editUser: function(user){
-          console.log(user.id);
-          return $http.put(baseUrl + "members/" + user.id, user);
+          return $http.put(baseUrl + "members/" + user._id, user).then((result)=>{
+            $window.localStorage.removeItem("user");
+            $window.localStorage.setItem("user", JSON.stringify(result.data.data));
+          })
         },
         removeUser: function(id){
-          return $http.delete("/api/users/" + id);
+          return $http.delete(baseUrl + "members/" + id).then((result)=>{
+            $window.localStorage.clear();
+          });
         }
       };
     };

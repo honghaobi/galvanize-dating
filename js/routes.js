@@ -38,11 +38,8 @@
         controllerAs: "Members",
         restricted: true,
         resolve: {
-          currentUser : function(UserService) {
-            return UserService.getCurrentUser();
-          },
           members: function(UserService){
-            return UserService.getAllUsers();
+            return UserService.getMembers();
           }
         }
       })
@@ -53,9 +50,6 @@
         controllerAs: "Profile",
         restricted: true,
         resolve:  {
-          currentUser: function(UserService) {
-            return UserService.getCurrentUser();
-          },
           user: function(UserService,$stateParams){
             return UserService.getProfile($stateParams.id);
           }
@@ -67,7 +61,7 @@
         resolve: {
           app: function(UserService, $state){
             UserService.logout();
-            $state.go("login");
+            $state.go("home");
           }
         }
       });
