@@ -1,29 +1,49 @@
-<h1>Signup</h1>
-
-<div ng-if="errors">
-  {{errors}}
+<div class="row">
+  <form method="POST" action="javascript:void(0)" ng-submit="Signup.signup(user)">
+    <div class="small-4 columns">
+      <label for="username">Username: </label>
+      <input type="text" ng-model="user.username" name="username" id="username">
+    </div>
+    <div class="small-4 columns">
+      <label for="firstName">First Name: </label>
+      <input type="text" ng-model="user.names.firstName" name="firstname" id="firstname">
+    </div>
+    <div class="small-4 columns">
+      <label for="lastName">Last Name: </label>
+      <input type="text" ng-model="user.names.lastName" name="lastname" id="lastname">
+    </div>
+    <div class="small-2 columns">
+      <label for="slug">Slug: </label>
+      <input type="text" ng-model="user.slug" name="slug" id="slug">
+    </div>
+    <div class="small-5 columns">
+      <label for="email">Email: </label>
+      <input type="email" ng-model="user.email" name="email" id="email">
+    </div>
+    <div class="small-3 columns">
+      <label for="dob">Date of Birth: </label>
+      <input type="text" ng-model="user.dob" name="dob" id="dob">
+    </div>
+    <div class="small-1 columns">
+      <label for="lat">Lat: </label>
+      <input type="number" ng-model="user.address.geo.lat" name="lat" id="lat">
+    </div>
+    <div class="small-1 columns">
+      <label for="lng">Long: </label>
+      <input type="number" ng-model="user.address.geo.lng" name="lng" id="lng">
+    </div>
+    <div class="small-6 columns">
+      <label for="password">Password: </label>
+      <input type="password" ng-model="user.password" name="password" id="password">
+    </div>
+    <div class="small-6 columns">
+      <label for="password">Sign Up: </label>
+      <input type="submit" class="success button expanded" value="Sign Up">
+    </div>
+  </form>
 </div>
-
-<form method="POST" action="javascript:void(0)" ng-submit="signup(user)">
-  <label for="username">Username: </label>
-  <input type="text" ng-model="user.username" name="username" id="username">
-  <label for="firstName">First Name: </label>
-  <input type="text" ng-model="user.names.firstName" name="firstname" id="firstname">
-  <label for="lastName">Last Name: </label>
-  <input type="text" ng-model="user.names.lastName" name="lastname" id="lastname">
-  <label for="email">Email: </label>
-  <input type="email" ng-model="user.email" name="email" id="email">
-  <label for="dob">Date of Birth: </label>
-  <input type="text" ng-model="user.dob" name="dob" id="dob">
-  <label for="slug">Slug: </label>
-  <input type="text" ng-model="user.slug" name="slug" id="slug">
-  <label for="lat">Lat: </label>
-  <input type="number" ng-model="user.address.geo.lat" name="lat" id="lat">
-  <label for="lng">Long: </label>
-  <input type="number" ng-model="user.address.geo.lng" name="lng" id="lng">
-
-  <label for="password">Password: </label>
-  <input type="password" ng-model="user.password" name="password" id="password">
-  <input type="submit" value="Sign Up">
-</form>
-  Have an account already? Log In <a href="/#/login">here</a>
+<div class="row">
+  <div class="small-8 columns">
+    Have an account already? Log In <a href="/#/login">here</a>
+  </div>
+</div>

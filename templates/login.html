@@ -1,14 +1,21 @@
-<h1>Login</h1>
-
-<div ng-if="errors">
-  {{errors}}
+<div class="row">
+  <form method="POST" action="javascript:void(0)" ng-submit="Login.login(user)">
+    <div class="small-6 columns">
+      <label for="email">Email: </label>
+      <input type="email" ng-model="user.email" name="email" id="email">
+    </div>
+    <div class="small-6 columns">
+      <label for="password">Password: </label>
+      <input type="password" ng-model="user.password" name="password" id="password">
+    </div>
+    <div class="small-12 columns">
+      <label for="password">Log In: </label>
+      <input type="submit" class="success button expanded" value="Log In">
+    </div>
+  </form>
 </div>
-<form method="POST" action="javascript:void(0)" ng-submit="login(user)">
-  <label for="email">Email: </label>
-  <input type="email" ng-model="user.email" name="email" id="email">
-  <label for="password">Password: </label>
-  <input type="password" ng-model="user.password" name="password" id="password">
-  <input type="submit" value="Log In">
-</form>
-
-Don't have an account? Sign Up <a href="/#/signup">here</a>
+<div class="row">
+  <div class="small-8 columns">
+    Don't have an account? Sign Up <a href="/#/signup">here</a>
+  </div>
+</div>
