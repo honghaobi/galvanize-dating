@@ -49,6 +49,11 @@
           return $http.delete(baseUrl + "members/" + id).then((result)=>{
             $window.localStorage.clear();
           });
+        },
+        getMember: function(id){
+          return $http.get(baseUrl + "members/" + id).then((result)=>{
+            return result.data.data;
+          });
         }
       };
     };

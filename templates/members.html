@@ -1,24 +1,27 @@
 <div class="top-bar secondary-menu">
   <div class="top-bar-left">
     <ul class="menu">
-      <li><a href="/members">all</a></li>
       <li><a href="/members">popular</a></li>
       <li><a href="/members">near me</a></li>
-      <li><a href="/members">my matches</a></li>
-      <li><a href="/members">chatting</a></li>
+      <li><a href="/members/matches">my matches</a></li>
+      <li><a href="/members/chatting">chatting</a></li>
+      <li><a href="/members/searches">searches</a></li>
     </ul>
   </div>
 </div>
 <div class="left-nav">
   <div class="column" ng-repeat="member in Members.members | filter:member.active">
-    <div class="callout">
-      <h6 class="lead">
+    <div class="callout"  ng-class="{members_hover: hover}"
+                          ng-mouseenter="hover = true"
+                          ng-mouseleave="hover = false"
+                          ng-click="Members.getMember(member._id)">
+      <h4 class="lead">
         {{member.names.firstName}} {{member.names.lastName}}
-      </h6>
+      </h4>
       <img ng-src={{member.avatar}} alt="avatar" />
     </div>
   </div>
 </div>
 <div class="right-content">
-
+  <div ui-view></div>
 </div>

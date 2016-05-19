@@ -15,13 +15,12 @@
       <ul class="menu">
         <li class="menu-text">
           <a href="/" class="logo">💞</a></li>
-        <li class="menu-text menu-head">Galvanize Dating</li>
       </ul>
     </div>
     <div class="top-bar-right" ng-controller="MenuController as Menu">
       <ul class="menu">
         <li class="menu-text">
-          Hi 
+          Hi
           {{Menu.currentUser.names.firstName}} {{Menu.currentUser.names.lastName}}
         </li>
         <li class="menu-text" ng-hide='Menu.currentUser'>
@@ -31,7 +30,7 @@
           <a href="/login" class="primary button">Log in</a>
         </li>
         <li class="menu-text" ng-show='Menu.currentUser'>
-          <a href="/members" class="button">Members</a>
+          <a href="/members/landing" class="button">Members</a>
         </li>
         <li class="menu-text" ng-show='Menu.currentUser'>
           <a href="/profile/{{Menu.currentUser._id}}" class="warning button">Profile</a>
@@ -40,13 +39,10 @@
           <a href="/logout" class="alert button">Log out</a>
         </li>
       </ul>
-
     </div>
   </div>
 
-
   <div ui-view></div>
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>

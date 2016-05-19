@@ -1,37 +1,35 @@
-<hr>
+<br>
+<br>
 <div class="row small-up-2 medium-up-2 large-up-2">
-<div class="column callout">
-    <div class="">
-      <h3>Your Profile</h3>
+  <div class="column callout prof1">
+    <div class="column">
+      <img ng-src={{::Profile.currentUser.avatar}} alt="avatar" />
     </div>
-    <div class="">
-      User Name: {{::Profile.currentUser.username}}
+    <div class="column callout info">
+      <div class="prof_user">
+        User Name: <span>{{::Profile.currentUser.username}}</span>
+      </div>
+      <div class="">
+        Full Name: <span>{{::Profile.currentUser.names.firstName}}{{::Profile.currentUser.names.lastName}}</span>
+      </div>
+      <div class="">
+        Email: <span>{{::Profile.currentUser.email}}</span>
+      </div>
+      <div class="">
+        Date of Birth: <span>{{::Profile.currentUser.dob | date}}</span>
+      </div>
+      <div class="">
+        Slug: <span>{{::Profile.currentUser.slug}}</span>
+      </div>
+      <div class="">
+        Address: Lat(<span>{{::Profile.currentUser.address.geo.lat}}</span>) Long(<span>{{::Profile.currentUser.address.geo.lng}}</span>)
+      </div>
+      <div class="">
+        Active: <span>{{::Profile.currentUser.active}}</span>
+      </div>
     </div>
-    <img width='40%' ng-src={{::Profile.currentUser.avatar}} alt="avatar" />
-    <div class="">
-      Full Name: {{::Profile.currentUser.names.firstName}}{{::Profile.currentUser.names.lastName}}
-    </div>
-    <div class="">
-      Email: {{::Profile.currentUser.email}}
-    </div>
-    <div class="">
-      Date of Birth: {{::Profile.currentUser.dob | date}}
-    </div>
-    <div class="">
-      Slug: {{::Profile.currentUser.slug}}
-    </div>
-    <div class="">
-      Address: Lat({{::Profile.currentUser.address.geo.lat}}) Long({{::Profile.currentUser.address.geo.lng}})
-    </div>
-    <div class="">
-      Active: {{::Profile.currentUser.active}}
-    </div>
-
   </div>
-  <div class="column callout">
-    <div class="">
-      <h3>Edit Profile</h3>
-    </div>
+  <div class="column callout prof2">
     <form method="POST" action="javascript:void(0)">
       <div class="small-4 columns">
         <label for="username">Username: </label>
@@ -62,6 +60,10 @@
       <div class="small-3 columns">
         <label for="dob">Date of Birth: </label>
         <input type="text" ng-model="Profile.currentUser.dob" name="dob" id="dob" placeholder='1988-09-09' required="true">
+      </div>
+      <div class="small-3 columns">
+        <label for="gender">Gender: </label>
+        <input type="number" ng-model="Profile.currentUser.gender" name="gender" id="gender">
       </div>
       <div class="small-1 columns">
         <label for="lat">Lat: </label>

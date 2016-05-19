@@ -43,6 +43,14 @@
           }
         }
       })
+      .state("members.landing", {
+        url: '/landing',
+        templateUrl: "templates/landing.html"
+      })
+      .state("members.member", {
+        url: '/member/:id',
+        templateUrl: "templates/member.html"
+      })
       .state("profile", {
         url: '/profile/:id',
         templateUrl: "templates/profile.html",

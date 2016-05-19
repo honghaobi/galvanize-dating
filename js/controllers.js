@@ -28,8 +28,8 @@
       vm.signup = function(user){
         UserService.signup(user).then(function(data){
           $state.go('home');
-        }).catch(function(data){
-          console.log(data.data);
+        }).catch(function(error){
+          console.log(error);
         });
       };
     };
@@ -39,7 +39,8 @@
       vm.login = function(user){
         UserService.login(user).then(function(data){
           $state.go('members');
-        }).catch(function(data){
+        }).catch(function(error){
+          console.log(error);
         });
       };
     };
@@ -50,24 +51,34 @@
       vm.editProfile = function(){
         UserService.editUser(vm.currentUser).then(function(data){
           $state.go('profile', {id: vm.currentUser._id}, {reload: true});
-        }).catch(function(err){
-          vm.errors = "Looks like someone already has that username!";
+        }).catch(function(error){
+          console.log(error);
         });
       };
 
       vm.deleteProfile = function(id){
         UserService.removeUser(id).then(function(data){
           $state.go('home');
-        }).catch(function(err){
-          vm.errors = err;
+        }).catch(function(error){
+          console.log(error);
         });
       };
     };
 
-    function MembersController (members){
+    function MembersController (UserService, $state, members){
       var vm = this;
       vm.members = members;
       console.log(vm.members);
+
+      vm.getMember = function(id){
+        UserService.getMember(id).then(function(member){
+          $state.go('members.member');
+          vm.selectedMember = member;
+          console.log(member);
+        }).catch(function(error){
+          console.log(error);
+        });
+      }
     };
 
 })();
