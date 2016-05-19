@@ -51,6 +51,10 @@
         url: '/member/:id',
         templateUrl: "templates/member.html"
       })
+      .state("members.matches", {
+        url: '/matches',
+        templateUrl: "templates/matches.html"
+      })
       .state("profile", {
         url: '/profile/:id',
         templateUrl: "templates/profile.html",

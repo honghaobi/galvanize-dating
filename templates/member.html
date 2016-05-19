@@ -1,3 +1,72 @@
 <img class="landing_img" src="img/img1.jpg" alt="" />
 
-hi selected member
+<div class="row callout">
+
+  <div class="medium-4 column">
+    <img class="member_prof" ng-src="{{Members.selectedMember.avatar}}" alt="profpic" />
+    <h3>
+      <strong>
+        {{Members.selectedMember.names.firstName}} {{Members.selectedMember.names.lastName}}
+      </strong>
+    </h3>
+    <a href="" class="alert expanded button" ng-click="Members.matchMember(Members.selectedMember._id)"
+    ng-show="Members.matches.indexOf(Members.selectedMember._id)<=0">Match Me 💘</a>
+    <br>
+    <a href="" class="warning expanded button" ng-click="Members.unmatchMember(Members.selectedMember._id)"
+    ng-hide="Members.matches.indexOf(Members.selectedMember._id)<=0">UnMatch Me 💔</a>
+    <br>
+    <a href="" class="success expanded button"
+    ng-hide="Members.matches.indexOf(Members.selectedMember._id)<=0">Chat ✉</a>
+  </div>
+  <div class="medium-8 column callout secondary">
+    <h6>
+      <strong>User Name:</strong>
+      {{Members.selectedMember.username}}
+    </h6>
+    <h6>
+      <strong>Email:</strong>
+      {{Members.selectedMember.email}}
+    </h6>
+    <h6>
+      <strong>Slug:</strong>
+      {{Members.selectedMember.slug}}
+    </h6>
+    <h6>
+      <strong>Date of Birth:</strong>
+      {{Members.selectedMember.dob | date}}
+    </h6>
+    <h6>
+      <strong>Address:</strong>
+      {{Members.selectedMember.address.street}}
+      {{Members.selectedMember.address.suite}}
+      <div class="">
+        {{Members.selectedMember.address.city}}
+        {{Members.selectedMember.address.zipcode}}
+      </div>
+    </h6>
+    <h6>
+      <strong>Phone:</strong>
+      {{Members.selectedMember.phone}}
+    </h6>
+    <h6>
+      <strong>Company: </strong>
+      {{Members.selectedMember.company.name}}
+    </h6>
+    <h6>
+      <strong>Website: </strong>
+      {{Members.selectedMember.website}}
+    </h6>
+    <h6>
+      <strong>Interested In:</strong>
+      {{Members.selectedMember.interestedIn[0]}}
+    </h6>
+    <h6>
+      <div class="">
+        <strong>Matches: </strong>
+      </div>
+      <span ng-repeat="match_pic in Members.selectedMember.matches_pic">
+        <img class="matched" ng-src="{{match_pic}}" alt="matched pics" />
+      </span>
+    </h6>
+  </div>
+</div>

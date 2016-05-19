@@ -1,3 +1,8 @@
+body{
+  max-width: 1460px;
+  overflow: hidden;
+}
+
 .home-container {
     width: 100%;
     height: 680px;
@@ -37,7 +42,7 @@
   height: 530px;
 }
 
-.prof1 img{
+.prof_img{
   border-color: white;
   border-width: 5px;
   border-style: solid;
@@ -62,7 +67,7 @@
   width: 100%;
   font-size: 16px;
   color: black;
-  text-overflow: clip;
+  overflow: scroll;
 }
 
 .info span{
@@ -79,6 +84,12 @@
   background-color: #2199e8;
   color: white;
 }
+
+.nested_view{
+  width: 70%;
+  overflow-x: none;
+}
+
 .left-nav {
   position: relative;
   top: 0;
@@ -107,14 +118,15 @@
   left: 200px;
   top: 139px;
   height: 400px;
-  overflow-x: none;
 }
 
 .landing_img{
   position: absolute;
-  width: 100%;
-  max-height: 680px;
-  min-width: 1100px;
+  /*width: 100%;*/
+  height: 680px;
+  width: 1300px;
+  /*min-width: 1100px;*/
+  /*max-width: 1000px;*/
   overflow: hidden;
   margin-top: -41px;
   opacity: 0.8;
@@ -124,4 +136,27 @@
 .members_hover{
   background-color:rgba(33, 153, 232, 0.2);;
   color: white;
+}
+
+.member_prof{
+  width: 100%;
+  border-width: 8px;
+  border-color: #2199e8;
+  border-style: solid;
+}
+
+.matched{
+  border-color: #fe4b8b;
+  border-width: 2px;
+  border-style: solid;
+  width: 31%;
+  margin-top: 5px;
+}
+
+.matched100{
+  width: 100%;
+}
+
+.margL10{
+  margin-left: 10%;
 }

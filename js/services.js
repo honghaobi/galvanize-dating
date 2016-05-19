@@ -28,6 +28,17 @@
           dfd.resolve(JSON.parse(logedInUser));
           return dfd.promise;
         },
+        getCurrentUserMatches: function(id){
+          return $http.get(baseUrl + "members/" + id).then((result)=>{
+            result.data.data.matches = [];
+            for (var i = 0; i < result.data.data._matches.length; i++) {
+               $http.get(baseUrl + "members/" + result.data.data._matches[i]).then((matched_user)=>{
+                 result.data.data.matches.push(matched_user.data.data);
+              });
+            }
+            return result.data.data;
+          });
+        },
         logout: function(){
           localStorage.clear();
         },
@@ -37,7 +48,15 @@
           });
         },
         getProfile: function(id){
-          return $http.get(baseUrl + "members/" + id);
+          return $http.get(baseUrl + "members/" + id).then((result)=>{
+            result.data.data.matches_pic = [];
+            for (var i = 0; i < result.data.data._matches.length; i++) {
+               $http.get(baseUrl + "members/" + result.data.data._matches[i]).then((matched_user)=>{
+                 result.data.data.matches_pic.push(matched_user.data.data.avatar);
+              });
+            }
+            return result.data.data;
+          });
         },
         editUser: function(user){
           return $http.put(baseUrl + "members/" + user._id, user).then((result)=>{
@@ -52,9 +71,28 @@
         },
         getMember: function(id){
           return $http.get(baseUrl + "members/" + id).then((result)=>{
+            result.data.data.matches_pic = [];
+            for (var i = 0; i < result.data.data._matches.length; i++) {
+               $http.get(baseUrl + "members/" + result.data.data._matches[i]).then((matched_user)=>{
+                 result.data.data.matches_pic.push(matched_user.data.data.avatar);
+              });
+            }
             return result.data.data;
           });
-        }
+        },
+        matchMember: function(userId, matchId){
+          var matchData = {
+            "_match": matchId
+          }
+          return $http.post(baseUrl + "members/" + userId + "/matches", matchData).then((data)=>{
+            return data.data.data._matches;
+          });
+        },
+        unmatchMember: function(userId, unmatchId){
+          return $http.delete(baseUrl + "members/" + userId + "/matches/" + unmatchId).then((data)=>{
+            return data.data.data._matches;
+          });
+        },
       };
     };
 })();

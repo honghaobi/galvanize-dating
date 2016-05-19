@@ -3,7 +3,7 @@
 <div class="row small-up-2 medium-up-2 large-up-2">
   <div class="column callout prof1">
     <div class="column">
-      <img ng-src={{::Profile.currentUser.avatar}} alt="avatar" />
+      <img class="prof_img" ng-src={{::Profile.currentUser.avatar}} alt="avatar" />
     </div>
     <div class="column callout info">
       <div class="prof_user">
@@ -26,6 +26,14 @@
       </div>
       <div class="">
         Active: <span>{{::Profile.currentUser.active}}</span>
+      </div>
+      <div class="">
+        <div class="">
+          Matches:
+        </div>
+        <span ng-repeat="match_pic in Profile.currentUser.matches_pic">
+          <img class="matched" ng-src="{{match_pic}}" alt="matched pics" />
+        </span>
       </div>
     </div>
   </div>
