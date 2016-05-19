@@ -55,6 +55,14 @@
         url: '/matches',
         templateUrl: "templates/matches.html"
       })
+      .state("members.popular", {
+        url: '/popular',
+        templateUrl: "templates/popular.html"
+      })
+      .state("members.location", {
+        url: '/location',
+        templateUrl: "templates/location.html"
+      })
       .state("profile", {
         url: '/profile/:id',
         templateUrl: "templates/profile.html",
