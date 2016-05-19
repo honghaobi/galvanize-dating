@@ -49,10 +49,10 @@
         },
         getProfile: function(id){
           return $http.get(baseUrl + "members/" + id).then((result)=>{
-            result.data.data.matches_pic = [];
+            result.data.data.matches = [];
             for (var i = 0; i < result.data.data._matches.length; i++) {
                $http.get(baseUrl + "members/" + result.data.data._matches[i]).then((matched_user)=>{
-                 result.data.data.matches_pic.push(matched_user.data.data.avatar);
+                 result.data.data.matches.push(matched_user.data.data);
               });
             }
             return result.data.data;
@@ -71,10 +71,10 @@
         },
         getMember: function(id){
           return $http.get(baseUrl + "members/" + id).then((result)=>{
-            result.data.data.matches_pic = [];
+            result.data.data.matches = [];
             for (var i = 0; i < result.data.data._matches.length; i++) {
                $http.get(baseUrl + "members/" + result.data.data._matches[i]).then((matched_user)=>{
-                 result.data.data.matches_pic.push(matched_user.data.data.avatar);
+                 result.data.data.matches.push(matched_user.data.data);
               });
             }
             return result.data.data;

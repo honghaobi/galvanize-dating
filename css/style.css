@@ -145,11 +145,19 @@ body{
   border-style: solid;
 }
 
-.matched{
+.matched3{
   border-color: #fe4b8b;
   border-width: 2px;
   border-style: solid;
   width: 31%;
+  margin-top: 5px;
+}
+
+.matched5{
+  border-color: #fe4b8b;
+  border-width: 2px;
+  border-style: solid;
+  width: 20%;
   margin-top: 5px;
 }
 
