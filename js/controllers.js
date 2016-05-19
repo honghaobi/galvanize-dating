@@ -90,6 +90,9 @@
       vm.matchMember = function(matchId){
         UserService.matchMember(vm.currentUser._id, matchId).then(function(matches){
           vm.matches = matches;
+          UserService.getCurrentUserMatches(vm.currentUser._id).then(function(data){
+            vm.currentUserMatches = data.matches;
+          });
         }).catch(function(error){
           console.log(error);
         });
