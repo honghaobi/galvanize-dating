@@ -1,11 +1,24 @@
-<h1>Members</h1>
-<div class="row small-up-2 medium-up-4 large-up-6">
-  <div class="column" ng-repeat="member in Members.members">
+<div class="top-bar secondary-menu">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li><a href="/members">all</a></li>
+      <li><a href="/members">popular</a></li>
+      <li><a href="/members">near me</a></li>
+      <li><a href="/members">my matches</a></li>
+      <li><a href="/members">chatting</a></li>
+    </ul>
+  </div>
+</div>
+<div class="left-nav">
+  <div class="column" ng-repeat="member in Members.members | filter:member.active">
     <div class="callout">
-      <p class="lead">
+      <h6 class="lead">
         {{member.names.firstName}} {{member.names.lastName}}
-      </p>
+      </h6>
       <img ng-src={{member.avatar}} alt="avatar" />
     </div>
   </div>
+</div>
+<div class="right-content">
+
 </div>

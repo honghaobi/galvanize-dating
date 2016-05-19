@@ -8,11 +8,33 @@
 }
 
 .menu-head {
-  color: white;
-  font-size: 40px;
+  color: darkgrey;
+  font-size: 30px;
   font-weight: 300;
 }
 
 .logo{
   font-size: 25px;
+}
+
+.secondary-menu, .secondary-menu a {
+  background-color: darkgray;
+}
+.left-nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 640px;
+  background-color: lightgray;
+  overflow-y: scroll;
+}
+.right-content {
+  position: fixed;
+  width: 70%;
+  right: 0;
+  top: 139px;
+  height: 100vh;
+  background-color: lightblue;
+  overflow: none;
 }
