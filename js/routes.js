@@ -63,6 +63,10 @@
         url: '/location',
         templateUrl: "templates/location.html"
       })
+      .state("members.search", {
+        url: '/search',
+        templateUrl: "templates/search.html"
+      })
       .state("profile", {
         url: '/profile/:id',
         templateUrl: "templates/profile.html",
