@@ -1,7 +1,11 @@
 <img class="landing_img" src="img/img2.jpg" alt="" />
 <div class="row margL10">
-  <div class="column medium-3 callout" ng-repeat="match in Members.currentUserMatches">
-    <img class="matched matched100" ng-src="{{match.avatar}}" alt="matched pics" />
+  <div class="column medium-3 callout"  ng-repeat="match in Members.currentUserMatches"
+                                        ng-class="{members_hover: hover}"
+                                        ng-mouseenter="hover = true"
+                                        ng-mouseleave="hover = false">
+    <img class="matched matched100" ng-src="{{match.avatar}}"
+    ng-click="Members.getMember(match._id)" alt="matched pics" />
     <a href="" class="warning expanded button" ng-click="Members.unmatchMember(match._id)">UnMatch Me 💔</a>
     <a href="" class="success expanded button">Chat ✉</a>
   </div>
