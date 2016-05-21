@@ -91,7 +91,7 @@
         }
       };
       vm.getPopularMembers(8);
-      
+
       vm.getClosestMembers = function(quantity){
         vm.closestMembers = members.filter(function(obj){
           return (obj.address.geo.lat == vm.currentUser.address.geo.lat &&

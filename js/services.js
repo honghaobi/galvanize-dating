@@ -59,10 +59,11 @@
           });
         },
         editUser: function(user){
+          delete user.matches;
           return $http.put(baseUrl + "members/" + user._id, user).then((result)=>{
             $window.localStorage.removeItem("user");
             $window.localStorage.setItem("user", JSON.stringify(result.data.data));
-          })
+          });
         },
         removeUser: function(id){
           return $http.delete(baseUrl + "members/" + id).then((result)=>{
