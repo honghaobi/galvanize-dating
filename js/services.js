@@ -94,6 +94,11 @@
             return data.data.data._matches;
           });
         },
+        search: function(searchQueryString){
+          return $http.get(baseUrl + "members/search?" + searchQueryString).then((data)=>{
+            return data.data.data;
+          });
+        }
       };
     };
 })();

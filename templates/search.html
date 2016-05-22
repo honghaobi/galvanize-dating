@@ -4,36 +4,37 @@
     <form method="POST" action="javascript:void(0)">
       <div class="small-4 columns">
         <label for="username">Username: </label>
-        <input type="text" ng-model="Members.search.username" name="username" id="username" minlength='6' required="true">
+        <input type="text" ng-model="Members.search.username" name="username" id="username" minlength='6'>
       </div>
       <div class="small-5 columns">
         <label for="email">Email: </label>
-        <input type="email" ng-model="Members.search.email" name="email" id="email"
-        required="true">
+        <input type="email" ng-model="Members.search.email" name="email" id="email">
       </div>
       <div class="small-3 columns">
         <label for="gender">Gender: </label>
-        <input type="number" ng-model="Members.search.gender" name="gender" id="gender" placeholder='0' required="true">
+        <input type="number" ng-model="Members.search.gender" name="gender" id="gender" placeholder='0'>
       </div>
       <div class="small-3 columns">
         Age From:
-        <input type="number" ng-model="Members.search.age" name="age" id="age">
+        <input type="number" ng-model="Members.search.minAge" name="age" id="age">
         Age To:
-        <input type="number" ng-model="Members.search.age" name="age" id="age">
+        <input type="number" ng-model="Members.search.maxAge" name="age" id="age">
       </div>
       <div class="small-3 columns">
-        <label for="interestedIn">Interested In: </label>
-          <select name="select">
-          <option value="0" selected>0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
+        Interested In:
+          <label for="interestedIn">0 </label>
+            <input type="checkbox" ng-model="Members.search.interestedInArray.op0">
+          <label for="interestedIn">1 </label>
+            <input type="checkbox" ng-model="Members.search.interestedInArray.op1">
+          <label for="interestedIn">2 </label>
+            <input type="checkbox" ng-model="Members.search.interestedInArray.op2">
+          <label for="interestedIn">3 </label>
+            <input type="checkbox" ng-model="Members.search.interestedInArray.op3">
       </div>
       Any of the above can match:
-      <input type="radio" name="search_type" value="true">
+      <input type="radio" name="search_type" value="false" ng-model="Members.search.exclusive">
       Everything above must match:
-      <input type="radio" name="search_type" value="false">
+      <input type="radio" name="search_type" value="true" ng-model="Members.search.exclusive">
 
       <button class="success button expanded" ng-click="Members.search()">Search</button>
     </form>

@@ -130,6 +130,35 @@
           console.log(error);
         });
       };
+
+      vm.search = function() {
+        var interestedInString = "";
+
+        if (vm.search.interestedInArray.op0) {
+          interestedInString = "0";
+        }
+        if (vm.search.interestedInArray.op1) {
+          interestedInString.concat(",1");
+          interestedInString += ",1";
+        }
+        if (vm.search.interestedInArray.op2) {
+          interestedInString.concat(",2");
+          interestedInString += ",2";
+        }
+        if (vm.search.interestedInArray.op3) {
+          interestedInString.concat(",3");
+          interestedInString += ",3";
+        }
+
+        var searchQueryString = "username=" + vm.search.username + "&" +      "email=" + vm.search.email + "&" + "gender=" + vm.search.gender + "&" + "maxAge=" + vm.search.maxAge + "&" + "minAge=" + vm.search.minAge + "&" + "interestedIn[]=" + interestedInString + "&" + "exclusive=" + vm.search.exclusive
+
+        console.log(searchQueryString);
+
+        UserService.search(searchQueryString).then(function(result){
+          console.log(result);
+          vm.searchResult = result;
+        });
+      };
     };
 
 })();
