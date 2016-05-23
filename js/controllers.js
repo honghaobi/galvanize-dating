@@ -149,6 +149,7 @@
           interestedInString.concat(",3");
           interestedInString += ",3";
         }
+        console.log('yo');
 
         var searchQueryString = "username=" + vm.search.username + "&" +      "email=" + vm.search.email + "&" + "gender=" + vm.search.gender + "&" + "maxAge=" + vm.search.maxAge + "&" + "minAge=" + vm.search.minAge + "&" + "interestedIn[]=" + interestedInString + "&" + "exclusive=" + vm.search.exclusive
 
