@@ -1,10 +1,10 @@
 <img class="landing_img" src="img/img1.jpg" alt="" />
-<div class="row small-up-1 medium-up-1 large-up-1 margL10">
+<div class="row small-up-1 medium-up-1 large-up-1 margL10" ng-hide="Members.searchResult">
   <div class="callout">
     <form method="POST" action="javascript:void(0)">
       <div class="small-4 columns">
         <label for="username">Username: </label>
-        <input type="text" ng-model="Members.search.username" name="username" id="username" minlength='6'>
+        <input type="text" ng-model="Members.search.username" name="username" id="username">
       </div>
       <div class="small-5 columns">
         <label for="email">Email: </label>
@@ -20,16 +20,16 @@
         Age To:
         <input type="number" ng-model="Members.search.maxAge" name="age" id="age">
       </div>
-      <div class="small-3 columns">
+      <div class="small-2 columns">
         Interested In:
-          <label for="interestedIn">0 </label>
-            <input type="checkbox" ng-model="Members.search.interestedInArray.op0">
-          <label for="interestedIn">1 </label>
-            <input type="checkbox" ng-model="Members.search.interestedInArray.op1">
-          <label for="interestedIn">2 </label>
-            <input type="checkbox" ng-model="Members.search.interestedInArray.op2">
-          <label for="interestedIn">3 </label>
-            <input type="checkbox" ng-model="Members.search.interestedInArray.op3">
+          Option 0
+            <input type="checkbox" ng-model="Members.search.interested0">
+          Option 1
+            <input type="checkbox" ng-model="Members.search.interested1">
+          Option 2
+            <input type="checkbox" ng-model="Members.search.interested2">
+          Option 3
+            <input type="checkbox" ng-model="Members.search.interested3">
       </div>
       Any of the above can match:
       <input type="radio" name="search_type" value="false" ng-model="Members.search.exclusive">
@@ -38,5 +38,24 @@
 
       <button class="success button expanded" ng-click="Members.search()">Search</button>
     </form>
+  </div>
+</div>
+
+<div class="row margL10" ng-show="Members.searchResult">
+  <br>
+  <a href="" class="success expanded button" ng-click="Members.clearSearchResult()">Search Again</a>
+  <br>
+  <div class="column medium-3 callout"  ng-repeat="member in Members.searchResult"
+                                        ng-class="{members_hover: hover}"
+                                        ng-mouseenter="hover = true"
+                                        ng-mouseleave="hover = false">
+    <img class="matched matched100" ng-src="{{member.avatar}}"
+    ng-click="Members.getMember(match._id)" alt="matched pics" />
+    <a href="" class="alert expanded button" ng-click="Members.matchMember(member._id)"
+    ng-show="Members.matches.indexOf(member._id)<=0">Match Me 💘</a>
+    <br>
+    <a href="" class="warning expanded button" ng-click="Members.unmatchMember(member._id)"
+    ng-hide="Members.matches.indexOf(member._id)<=0">UnMatch Me 💔</a>
+    <br>
   </div>
 </div>

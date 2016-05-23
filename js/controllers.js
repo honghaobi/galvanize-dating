@@ -132,7 +132,6 @@
       };
 
       vm.search = function() {
-
         var searchQueryString = '?';
 
         if (vm.search.username) {
@@ -150,16 +149,16 @@
         if (vm.search.minAge) {
           searchQueryString = searchQueryString.concat("minAge=", vm.search.minAge, "&");
         }
-        if (vm.search.interestedInArray.op0) {
+        if (vm.search.interested0) {
           searchQueryString = searchQueryString.concat("interestedIn[]=", "0", "&");
         }
-        if (vm.search.interestedInArray.op1) {
+        if (vm.search.interested1) {
           searchQueryString = searchQueryString.concat("interestedIn[]=", "1", "&");
         }
-        if (vm.search.interestedInArray.op2) {
+        if (vm.search.interested2) {
           searchQueryString = searchQueryString.concat("interestedIn[]=", "2", "&");
         }
-        if (vm.search.interestedInArray.op3) {
+        if (vm.search.interested3) {
           searchQueryString = searchQueryString.concat("interestedIn[]=", "3", "&");
         }
         if (vm.search.exclusive) {
@@ -167,9 +166,13 @@
         }
 
         UserService.search(searchQueryString).then(function(result){
+
           console.log(result);
           vm.searchResult = result;
         });
+      };
+      vm.clearSearchResult = function(){
+        vm.searchResult = false;
       };
     };
 
