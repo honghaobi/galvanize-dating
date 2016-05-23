@@ -132,28 +132,39 @@
       };
 
       vm.search = function() {
-        var interestedInString = "";
 
+        var searchQueryString = '?';
+
+        if (vm.search.username) {
+          searchQueryString = searchQueryString.concat("username=", vm.search.username, "&");
+        }
+        if (vm.search.email) {
+          searchQueryString = searchQueryString.concat("email=", vm.search.email, "&");
+        }
+        if (vm.search.gender) {
+          searchQueryString = searchQueryString.concat("gender=", vm.search.gender, "&");
+        }
+        if (vm.search.maxAge) {
+          searchQueryString = searchQueryString.concat("maxAge=", vm.search.maxAge, "&");
+        }
+        if (vm.search.minAge) {
+          searchQueryString = searchQueryString.concat("minAge=", vm.search.minAge, "&");
+        }
         if (vm.search.interestedInArray.op0) {
-          interestedInString = "0";
+          searchQueryString = searchQueryString.concat("interestedIn[]=", "0", "&");
         }
         if (vm.search.interestedInArray.op1) {
-          interestedInString.concat(",1");
-          interestedInString += ",1";
+          searchQueryString = searchQueryString.concat("interestedIn[]=", "1", "&");
         }
         if (vm.search.interestedInArray.op2) {
-          interestedInString.concat(",2");
-          interestedInString += ",2";
+          searchQueryString = searchQueryString.concat("interestedIn[]=", "2", "&");
         }
         if (vm.search.interestedInArray.op3) {
-          interestedInString.concat(",3");
-          interestedInString += ",3";
+          searchQueryString = searchQueryString.concat("interestedIn[]=", "3", "&");
         }
-        console.log('yo');
-
-        var searchQueryString = "username=" + vm.search.username + "&" +      "email=" + vm.search.email + "&" + "gender=" + vm.search.gender + "&" + "maxAge=" + vm.search.maxAge + "&" + "minAge=" + vm.search.minAge + "&" + "interestedIn[]=" + interestedInString + "&" + "exclusive=" + vm.search.exclusive
-
-        console.log(searchQueryString);
+        if (vm.search.exclusive) {
+          searchQueryString = searchQueryString.concat("exclusive=", vm.search.exclusive);
+        }
 
         UserService.search(searchQueryString).then(function(result){
           console.log(result);
