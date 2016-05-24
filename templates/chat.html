@@ -12,7 +12,6 @@
       <span class="convo_name_2" ng-show="conversation.reciever._id === convo._sender">
         {{conversation.reciever.username}}
       </span>
-
         ({{convo.timestamp| date: 'short'}}): {{convo.content}}
     </div>
     <a ui-sref="members.chatone({recipientId: conversation.reciever._id})" class="success expanded button">Chat ✉</a>

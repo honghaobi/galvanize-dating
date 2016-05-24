@@ -8,7 +8,8 @@
         .controller("SignupController", SignupController)
         .controller("LoginController", LoginController)
         .controller("UserController", UserController)
-        .controller("MembersController", MembersController);
+        .controller("MembersController", MembersController)
+        .controller("ConversationController", ConversationController);
 
     function MenuController($rootScope, UserService){
       var vm = this;
@@ -68,6 +69,8 @@
     function MembersController (UserService, $state, members){
       var vm = this;
       vm.members = members;
+      // vm.conversation = conversation;
+      // console.log(vm.conversation);
       // console.log(vm.members);
 
       UserService.getCurrentUser().then(function(data){
@@ -167,8 +170,6 @@
         }
 
         UserService.search(searchQueryString).then(function(result){
-
-          console.log(result);
           vm.searchResult = result;
         });
       };
@@ -177,10 +178,28 @@
       };
       vm.getAllConversations = function(){
         UserService.getAllConversations(vm.currentUser._id).then(function(conversations){
-          console.log(conversations);
           vm.allConversations = conversations;
+        });
+      };
+      vm.sendMessage = function(_recipient){
+        UserService.sendMessage(_recipient, vm.message, vm.currentUser._id).then(function(data){
+          $state.go('members.chatone',({recipientId:_recipient}));
         });
       }
     };
+    function ConversationController (UserService, $state, conversation){
+      var vm = this;
+      vm.conversation = conversation;
+      UserService.getCurrentUser().then(function(data){
+        vm.currentUser = data;
+      });
 
+      vm.sendMessage = function(_recipient){
+        UserService.sendMessage(_recipient, vm.message, vm.currentUser._id).then(function(data){
+          UserService.getConversation(vm.currentUser._id, $state.params.recipientId).then(function(conversation){
+            vm.conversation = conversation;
+          });
+        });
+      }
+    };
 })();

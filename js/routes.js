@@ -69,7 +69,19 @@
       })
       .state("members.chatone", {
         url: '/chat/:recipientId',
-        templateUrl: "templates/chatone.html"
+        templateUrl: "templates/chatone.html",
+        controller: "ConversationController",
+        controllerAs: "Conversation",
+        resolve:  {
+          conversation: function(UserService,$stateParams){
+            return UserService.getCurrentUser().then(function(data){
+              var currentUser = data;
+              return UserService.getConversation(currentUser._id, $stateParams.recipientId).then(function(data){
+                return data;
+              });
+            });
+          }
+        }
       })
       .state("members.search", {
         url: '/search',

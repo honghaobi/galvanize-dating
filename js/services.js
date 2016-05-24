@@ -101,7 +101,6 @@
         },
         getAllConversations: function(userId){
           return $http.get(baseUrl + "members/" + userId + "/conversations").then((data)=>{
-
             function memberRequest(i){
               $http.get(baseUrl + "members/" + data.data.data[i]._members[1]).then((recieverInfo)=>{
                 data.data.data[i].reciever = recieverInfo.data.data;
@@ -110,7 +109,19 @@
             for (var i = 0; i < data.data.data.length; i++) {
               memberRequest(i);
             }
-
+            return data.data.data;
+          });
+        },
+        getConversation: function(id, recipientId){
+          return $http.get(baseUrl + "members/" + id + "/conversations/" + recipientId).then((data)=>{
+            return $http.get(baseUrl + "members/" + data.data.data[0]._members[1]).then((recieverInfo)=>{
+              data.data.data[0].reciever = recieverInfo.data.data;
+              return data.data.data[0];
+            });
+          });
+        },
+        sendMessage: function(_recipient, content, senderId){
+          return $http.post(baseUrl + "members/" + senderId + "/conversations/", {_recipient, content}).then((data)=>{
             return data.data.data;
           });
         }
