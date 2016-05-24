@@ -11,6 +11,6 @@
       {{member.names.firstName}} {{member.names.lastName}}
     </div>
     <a href="" class="warning expanded button" ng-click="Members.unmatchMember(member._id)">UnMatch Me 💔</a>
-    <a href="" class="success expanded button">Chat ✉</a>
+    <a ui-sref="members.chatone({recipientId: member._id})" class="success expanded button" ng-hide="Members.matches.indexOf(member._id)<0">Chat ✉</a>
   </div>
 </div>

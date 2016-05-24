@@ -67,7 +67,7 @@
         url: '/chat/conversations',
         templateUrl: "templates/chat.html"
       })
-      .state("members.chat.individual", {
+      .state("members.chatone", {
         url: '/chat/:recipientId',
         templateUrl: "templates/chatone.html"
       })

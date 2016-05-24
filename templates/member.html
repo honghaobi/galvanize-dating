@@ -15,8 +15,7 @@
     <a href="" class="warning expanded button" ng-click="Members.unmatchMember(Members.selectedMember._id)"
     ng-hide="Members.matches.indexOf(Members.selectedMember._id)<=0">UnMatch Me 💔</a>
     <br>
-    <a href="" class="success expanded button"
-    ng-hide="Members.matches.indexOf(Members.selectedMember._id)<=0">Chat ✉</a>
+    <a ui-sref="members.chatone({recipientId: Members.selectedMember._id})" class="success expanded button" ng-hide="Members.matches.indexOf(Members.selectedMember._id)<=0">Chat ✉</a>
   </div>
   <div class="medium-8 column callout secondary">
     <h6>

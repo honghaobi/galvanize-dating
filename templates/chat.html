@@ -15,6 +15,6 @@
 
         ({{convo.timestamp| date: 'short'}}): {{convo.content}}
     </div>
-    <a href="members/chat/{{conversation.reciever._id}}" class="success expanded button">Chat ✉</a>
+    <a ui-sref="members.chatone({recipientId: conversation.reciever._id})" class="success expanded button">Chat ✉</a>
   </div>
 </div>
