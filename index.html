@@ -14,10 +14,13 @@
     <div class="top-bar-left">
       <ul class="menu">
         <li class="menu-text">
-          <a href="/" class="logo">💞</a></li>
+          <a href="/" class="logo">💞 Cyber Dating</a></li>
       </ul>
     </div>
     <div class="top-bar-right" ng-controller="MenuController as Menu">
+      <div class="modal" ng-show='Menu.modal'>
+        Please Wait While We Find Your True Love on Cyber Dating
+      </div>
       <ul class="menu">
         <li class="menu-text">
           Hi
@@ -30,7 +33,7 @@
           <a href="/login" class="primary button">Log in</a>
         </li>
         <li class="menu-text" ng-show='Menu.currentUser'>
-          <a href="/members/landing" class="button">Members</a>
+          <a href="/members/landing" class="button" ng-click='Menu.showModal()'>Members</a>
         </li>
         <li class="menu-text" ng-show='Menu.currentUser'>
           <a href="/profile/{{Menu.currentUser._id}}" class="warning button">Profile</a>
@@ -43,7 +46,6 @@
   </div>
 
   <div ui-view></div>
-
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

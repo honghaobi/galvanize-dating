@@ -18,6 +18,12 @@
           vm.currentUser = data;
         });
       });
+      vm.showModal = function(){
+        vm.modal = true;
+      }
+      $rootScope.$on('modal-close', function(event, args){
+        vm.modal = false;
+      });
     };
 
     function HomeController(UserService, $state){
@@ -66,12 +72,10 @@
       };
     };
 
-    function MembersController (UserService, $state, members){
+    function MembersController (UserService, $state, members, $rootScope){
       var vm = this;
       vm.members = members;
-      // vm.conversation = conversation;
-      // console.log(vm.conversation);
-      // console.log(vm.members);
+      $rootScope.$broadcast('modal-close');
 
       UserService.getCurrentUser().then(function(data){
         vm.currentUser = data;

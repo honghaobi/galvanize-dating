@@ -183,3 +183,16 @@ body{
 .convo_name_2{
   color: blue;
 }
+
+.modal {
+  position: fixed;
+  top: 25%;
+  right: 25%;
+  bottom: 25%;
+  left: 25%;
+  background: rgba(152, 22, 0, 0.6);
+  z-index: 99999;
+  font-size: 60px;
+  color: white;
+  text-align: center;
+}
