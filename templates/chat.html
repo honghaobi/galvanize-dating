@@ -1,0 +1,20 @@
+<img class="landing_img" src="img/img1.jpg" alt="" />
+<br>
+<div class="row margL10">
+  <div class="column medium-4 callout"  ng-repeat="conversation in Members.allConversations">
+    <img class="" ng-src="{{conversation.reciever.avatar}}"
+    ng-click="Members.getMember(conversation.reciever._id)"/>
+    <div class="name">{{conversation.reciever.names.firstName}} {{conversation.reciever.names.lastName}}</div>
+    <div ng-repeat="convo in conversation.messages">
+      <span class="convo_name_1" ng-hide="conversation.reciever._id === convo._sender">
+        {{Members.currentUser.username}}
+      </span>
+      <span class="convo_name_2" ng-show="conversation.reciever._id === convo._sender">
+        {{conversation.reciever.username}}
+      </span>
+
+        ({{convo.timestamp| date: 'short'}}): {{convo.content}}
+    </div>
+    <a href="members/chat/{{conversation.reciever._id}}" class="success expanded button">Chat ✉</a>
+  </div>
+</div>

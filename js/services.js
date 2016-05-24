@@ -98,6 +98,21 @@
           return $http.get(baseUrl + "members/search" + searchQueryString).then((data)=>{
             return data.data.data;
           });
+        },
+        getAllConversations: function(userId){
+          return $http.get(baseUrl + "members/" + userId + "/conversations").then((data)=>{
+
+            function memberRequest(i){
+              $http.get(baseUrl + "members/" + data.data.data[i]._members[1]).then((recieverInfo)=>{
+                data.data.data[i].reciever = recieverInfo.data.data;
+              });
+            }
+            for (var i = 0; i < data.data.data.length; i++) {
+              memberRequest(i);
+            }
+
+            return data.data.data;
+          });
         }
       };
     };

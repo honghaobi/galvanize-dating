@@ -68,12 +68,14 @@
     function MembersController (UserService, $state, members){
       var vm = this;
       vm.members = members;
-      console.log(vm.members);
+      // console.log(vm.members);
 
       UserService.getCurrentUser().then(function(data){
         vm.currentUser = data;
-
         vm.getClosestMembers();
+        vm.getPopularMembers(8);
+        vm.getAllConversations();
+
         UserService.getCurrentUserMatches(vm.currentUser._id).then(function(data){
           vm.matches = data._matches;
           vm.currentUserMatches = data.matches;
@@ -90,7 +92,6 @@
           vm.popularMembers.push(members[i]);
         }
       };
-      vm.getPopularMembers(8);
 
       vm.getClosestMembers = function(quantity){
         vm.closestMembers = members.filter(function(obj){
@@ -174,6 +175,12 @@
       vm.clearSearchResult = function(){
         vm.searchResult = false;
       };
+      vm.getAllConversations = function(){
+        UserService.getAllConversations(vm.currentUser._id).then(function(conversations){
+          console.log(conversations);
+          vm.allConversations = conversations;
+        });
+      }
     };
 
 })();

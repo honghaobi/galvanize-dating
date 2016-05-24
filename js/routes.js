@@ -63,6 +63,14 @@
         url: '/location',
         templateUrl: "templates/location.html"
       })
+      .state("members.chat", {
+        url: '/chat/conversations',
+        templateUrl: "templates/chat.html"
+      })
+      .state("members.chat.individual", {
+        url: '/chat/:recipientId',
+        templateUrl: "templates/chatone.html"
+      })
       .state("members.search", {
         url: '/search',
         templateUrl: "templates/search.html"
