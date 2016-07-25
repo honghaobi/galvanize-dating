@@ -2,7 +2,7 @@
 <html lang="en" ng-app='datingApp'>
 <head>
   <meta charset="UTF-8">
-  <title>G-School Dating App</title>
+  <title>Nerdflirt</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
   <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
@@ -14,12 +14,15 @@
     <div class="top-bar-left">
       <ul class="menu">
         <li class="menu-text">
-          <a href="/" class="logo">💞 Cyber Dating</a></li>
+          <a href="/" class="logo"><img class="nlogo" src="img/nerdlogo.png" alt="nerd" />
+            <span class="nerd-flirt">NerdFlirt</span>
+          </a>
+        </li>
       </ul>
     </div>
     <div class="top-bar-right" ng-controller="MenuController as Menu">
       <div class="modal" ng-show='Menu.modal'>
-        Please Wait While We Find Your True Love on Cyber Dating
+        Please Wait While We Find Your True Love on NerdFlirt
       </div>
       <ul class="menu">
         <li class="menu-text">
